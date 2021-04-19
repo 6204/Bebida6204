@@ -1,7 +1,7 @@
-import logo from '../assets/logo.svg';
-import '../App.css';
-
-function App() {
+import logo from '../../assets/logo.svg';
+import '../../App.css';
+import React from 'react'
+function Menu() {
   return (
     <div className="App">
       <header className="App-header">
@@ -22,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default Menu;
