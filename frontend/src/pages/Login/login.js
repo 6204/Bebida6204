@@ -1,8 +1,8 @@
 import '../../App.css';
 import React from 'react'
 import { styled } from '@material-ui/core/styles';
-import Logo from '../../components/logotipo'
-import { TextInputUsual, TextInputPassword} from '../../components/textInput'
+import Logo from '../../components/Logotipo.js'
+import { TextInputUsual, TextInputPassword } from '../../components/TextInput'
 import { Box, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
@@ -20,13 +20,14 @@ const useStyles = makeStyles({
  
 
 
-function Login() {
 
+function Login() {
+  
   return (
     <Box className={useStyles().root} >
       <Logo/>
-      <TextInputUsual/>
-      <TextInputPassword/>
+        <TextInputUsual/>
+        <TextInputPassword/>
     </Box>
     
 
