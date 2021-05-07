@@ -5,7 +5,7 @@ import {
 
 } from '@material-ui/core'
 
-export const InputArea = () => {
+export const InputArea = (props) => {
     let useStyles = makeStyles({
         inputArea: {
             display:'flex',    
@@ -15,14 +15,14 @@ export const InputArea = () => {
             height: '35vh',
             width: '35vh',
         
-          } 
+        } 
     })
 
     return (
-        <Box  borderRadius={25} border={1} borderColor={"#fabd28"} className={useStyles().inputArea} >
-
+        <Box  borderRadius={25} border={1} borderColor={"#fabd28"} className={useStyles().inputArea}>
+            {props.children}
         </Box>
-
+        
 
     )
 }

@@ -1,9 +1,9 @@
 import '../../App.css';
 import React from 'react'
-import { styled } from '@material-ui/core/styles';
 import Logo from '../../components/Logotipo.js'
 import { TextInputUsual, TextInputPassword } from '../../components/TextInput'
 import {InputArea} from '../../components/InputArea'
+import {LoginButton} from '../../components/Button'
 import { Box, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
@@ -18,6 +18,7 @@ const useStyles = makeStyles({
 
   inputArea: {
     display:'flex',    
+    backgroundColor: '#000000',
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -25,8 +26,6 @@ const useStyles = makeStyles({
     width: '35vh',
 
   }
-
-
 })
  
 
@@ -37,10 +36,11 @@ function Login() {
   return (
     <Box className={useStyles().root} >
       <Logo/>
-      <Box borderRadius={25} border={1} borderColor={"#fabd28"} className={useStyles().inputArea}>
+      <InputArea>
         <TextInputUsual/>
         <TextInputPassword/>
-      </Box>
+        <LoginButton/>
+      </InputArea>
     </Box>
     
 
