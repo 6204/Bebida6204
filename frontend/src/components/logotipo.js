@@ -1,12 +1,12 @@
 import React from 'react'
 import Logo from '../assets/logobebida.png'
 
-function TextInput(){
+function Logotipo(){
 
     return(
 
-        <img src={Logo} alt='Logo'/>
+        <img  src={Logo} alt='Logo'/>
         
 )}
 
-export default TextInput
+export default Logotipo

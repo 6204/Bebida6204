@@ -9,7 +9,7 @@ import { Box,
         Grid,
         IconButton,
     } from '@material-ui/core'
-import { AccountCircle, Visibility, VisibilityOff }from '@material-ui/icons';
+import { AccountCircle, Lock, Visibility, VisibilityOff }from '@material-ui/icons';
 
 
 
@@ -99,6 +99,7 @@ export const TextInputPassword = ({}) => {
         <TextField
         id="outlined-adornment-password"
         type={'password'}
+        variant="outlined"
         label="Senha"
         className={useStyles().input}
         InputLabelProps={{
@@ -113,7 +114,12 @@ export const TextInputPassword = ({}) => {
                   edge="end"
                 >
                 </IconButton>
-              </InputAdornment>
+            </InputAdornment>
+          ),
+          startAdornment: (
+            <InputAdornment position="start">
+              <Lock className={useStyles().icon}/>
+            </InputAdornment>
           ),
         }}
       />
