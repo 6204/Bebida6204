@@ -25,6 +25,11 @@ const useStyles = makeStyles({
     height: '35vh',
     width: '35vh',
 
+  },
+  button: {
+    backgroundColor: '#ffffff',
+    width: 100,
+    height: 100,
   }
 })
  
