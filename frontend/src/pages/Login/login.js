@@ -15,27 +15,8 @@ const useStyles = makeStyles({
     alignItems: 'center',
     flexDirection: 'column',
   },
-
-  inputArea: {
-    display:'flex',    
-    backgroundColor: '#000000',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: '35vh',
-    width: '35vh',
-
-  },
-  button: {
-    backgroundColor: '#ffffff',
-    width: 100,
-    height: 100,
-  }
 })
  
-
-
-
 function Login() {
   
   return (
