@@ -13,7 +13,7 @@ import { AccountCircle, Lock, Visibility, VisibilityOff }from '@material-ui/icon
 
 
 
-export const TextInputUsual = ({}) => {
+export const TextInputUsual = ({usuario, setUsuario}) => {
     let useStyles = makeStyles({
         root: {
             id: "filled-basic",
@@ -40,6 +40,11 @@ export const TextInputUsual = ({}) => {
 
     return(
         <TextField
+
+        onChange={(text) => {
+          setUsuario(text.target.value)
+          console.log(text.target.value)
+        }}
         id="input-with-icon-textfield"
         label="Usuário"
         variant="outlined"

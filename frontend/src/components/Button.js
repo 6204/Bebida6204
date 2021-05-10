@@ -6,7 +6,7 @@ import {
 
 } from '@material-ui/core'
 
-export const LoginButton = (props) => {
+export const LoginButton = ({action}) => {
 
     let useStyles = makeStyles({
         loginButton: {
@@ -24,13 +24,13 @@ export const LoginButton = (props) => {
         root: {
             display: 'flex',
             flex: 1,
-            height: '100%',
+            height: '100%', 
           },
     })
 
 
     return (
-        <Box display="flex" onClick={()=> {console.log("CLICKOU")}} className={useStyles().loginButton}>
+        <Box display="flex" onClick={action} className={useStyles().loginButton}>
             <Button
                 classes={{
                 root: useStyles().root, // class name, e.g. `classes-nesting-root-x`

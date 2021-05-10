@@ -1,12 +1,11 @@
 import '../../App.css';
 import React from 'react'
+import { Box, makeStyles } from '@material-ui/core'
 function NotFound() {
   return (
-    {/* <Container>
-      <TextError>
-        [ERROR 404] Page not Found!
-      </TextError>
-    </Container> */}
+    <Box>
+      NOT FOUND
+    </Box>
   );
 }
 

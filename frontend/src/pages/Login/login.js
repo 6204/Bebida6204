@@ -1,5 +1,5 @@
 import '../../App.css';
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from '../../components/Logotipo.js'
 import { TextInputUsual, TextInputPassword } from '../../components/TextInput'
 import {InputArea} from '../../components/InputArea'
@@ -18,14 +18,16 @@ const useStyles = makeStyles({
 })
  
 function Login() {
+
+  const [usuario, setUsuario] = useState('Luan')
   
   return (
     <Box className={useStyles().root} >
       <Logo/>
       <InputArea>
-        <TextInputUsual/>
+        <TextInputUsual usuario={usuario} setUsuario={setUsuario}  />
         <TextInputPassword/>
-        <LoginButton/>
+        <LoginButton action={()=>{window.location = "/Menu";}} />
       </InputArea>
     </Box>
     

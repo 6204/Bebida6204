@@ -10,9 +10,9 @@ function Routes() {
     <Router>
       <Switch>
         <Route exact path="/" component={Login}/> 
-        {/* <Route exact path="/menu" component={Menu}/>
+        <Route exact path="/menu" component={Menu}/>
         <Route exact path="/404" component={NotFound}/> 
-        <Redirect to="/404" component={NotFound}/>    */}            
+        <Redirect to="/404" component={NotFound}/>               
       </Switch>  
     </Router>
   );
