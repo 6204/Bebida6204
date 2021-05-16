@@ -6,7 +6,7 @@ import {
 
 } from '@material-ui/core'
 
-export const LoginButton = ({action}) => {
+export const LoginButton = ({action, title}) => {
 
     let useStyles = makeStyles({
         loginButton: {
@@ -37,7 +37,7 @@ export const LoginButton = ({action}) => {
                 label: useStyles().textButton, // class name, e.g. `classes-nesting-label-x`
               }}
             >
-                ENTRAR
+                {title}
             </Button>        
         </Box>
     )   

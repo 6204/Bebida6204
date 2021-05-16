@@ -40,10 +40,8 @@ export const TextInputUsual = ({usuario, setUsuario}) => {
 
     return(
         <TextField
-
         onChange={(text) => {
           setUsuario(text.target.value)
-          console.log(text.target.value)
         }}
         id="input-with-icon-textfield"
         label="Usuário"
@@ -63,7 +61,7 @@ export const TextInputUsual = ({usuario, setUsuario}) => {
     )
 }
 
-export const TextInputPassword = ({}) => {
+export const TextInputPassword = ({password, setPassword}) => {
     const useStyles = makeStyles({
         root: {
             id: "filled-basic",
@@ -86,17 +84,6 @@ export const TextInputPassword = ({}) => {
         },
     })
 
-    const [password, setPassword] = useState('')
-    const [showPassword, setShowPassword] = useState(false)
-
-    const handleClickShowPassword = () => {
-        if(showPassword){
-            setShowPassword(false)
-        } else {
-            setPassword(true)
-        }
-    };
-
         
     
     return(
@@ -104,23 +91,16 @@ export const TextInputPassword = ({}) => {
         <TextField
         id="outlined-adornment-password"
         type={'password'}
+        onChange={(text) => {
+          setPassword(text.target.value)
+        }}
         variant="outlined"
         label="Senha"
         className={useStyles().input}
         InputLabelProps={{
             className: useStyles().icon
         }}
-        InputProps={{ 
-          startAdornment: (
-            <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  edge="end"
-                >
-                </IconButton>
-            </InputAdornment>
-          ),
+        InputProps={{
           startAdornment: (
             <InputAdornment position="start">
               <Lock className={useStyles().icon}/>
