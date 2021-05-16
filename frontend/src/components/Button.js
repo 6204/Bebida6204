@@ -32,6 +32,7 @@ export const LoginButton = ({action, title}) => {
     return (
         <Box display="flex" onClick={action} className={useStyles().loginButton}>
             <Button
+                type="submit"
                 classes={{
                 root: useStyles().root, // class name, e.g. `classes-nesting-root-x`
                 label: useStyles().textButton, // class name, e.g. `classes-nesting-label-x`

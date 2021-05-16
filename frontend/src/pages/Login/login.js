@@ -2,12 +2,12 @@ import '../../App.css';
 import React, { useState } from 'react'
 import * as yup from 'yup';
 import Logo from '../../components/Logotipo.js'
-import { TextInputUsual, TextInputPassword } from '../../components/TextInput'
+import  TextInputUsual from '../../components/TextInput'
 import {InputArea} from '../../components/InputArea'
 import {LoginButton} from '../../components/Button'
 import { Box, makeStyles } from '@material-ui/core'
 import { BrowserRouter as Router, useHistory } from 'react-router-dom';
-
+import {Form} from '@unform/web'
 const useStyles = makeStyles({
   root: {
     display:'flex',
@@ -21,22 +21,21 @@ const useStyles = makeStyles({
  
 function Login() {
 
-  const [usuario, setUsuario] = useState('')
-  const [password, setPassword] = useState('')
   let history = useHistory()
-
-  function verify(){
-    history.push("/menu") 
+  
+  function verify(data){
+    console.log(data)
+    //history.push("/menu") 
   }
   
   return (
     <Box className={useStyles().root} >
       <Logo/>
-      <InputArea>
-        <TextInputUsual usuario={usuario} setUsuario={setUsuario}  />
-        <TextInputPassword password={password} setPassword={setPassword}/>
-        <LoginButton action={()=>verify()} title={`ENTRAR`} />
-      </InputArea>
+      <Form onSubmit={verify} >
+          <TextInputUsual name='name'/>
+          <TextInputUsual name='password'/>
+          <button type="submit">ENVIAR</button>
+        </Form>  
     </Box>
     
 
