@@ -48,6 +48,7 @@ function Login() {
     <Box className={useStyles().root} >
       <Logo/>
       <Form /* initialData={initialData} */borderWidth={5} className={useStyles().inputArea} onSubmit={verify} >
+          
           <TextInput type="name" name='name'/>
           <TextInput type="password" name='password'/>
           <LoginButton title={`LOGIN`}/>
