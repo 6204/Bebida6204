@@ -11,6 +11,8 @@ export const InputArea = (props) => {
             display:'flex',    
             flexDirection: 'column',
             justifyContent: 'space-around',
+            borderWidth: 2,
+            borderColor: '#000000',
             alignItems: 'center',
             height: '35vh',
             width: '35vh',

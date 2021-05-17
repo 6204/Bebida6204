@@ -2,10 +2,10 @@ import '../../App.css';
 import React, { useState } from 'react'
 import * as yup from 'yup';
 import Logo from '../../components/Logotipo.js'
-import  TextInputUsual from '../../components/TextInput'
+import  TextInput from '../../components/TextInput'
 import {InputArea} from '../../components/InputArea'
 import {LoginButton} from '../../components/Button'
-import { Box, makeStyles } from '@material-ui/core'
+import { Box, Button, makeStyles } from '@material-ui/core'
 import { BrowserRouter as Router, useHistory } from 'react-router-dom';
 import {Form} from '@unform/web'
 const useStyles = makeStyles({
@@ -17,8 +17,24 @@ const useStyles = makeStyles({
     alignItems: 'center',
     flexDirection: 'column',
   },
+  inputArea: {
+    display:'flex',    
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '35vh',
+    width: '35vh',
+    border: '1px solid ',
+    borderColor: '#f7bb28',
+    borderRadius: 20,
+
+  }, 
 })
  
+const initialData = {
+  name: 'Luan Santos',
+}
+
 function Login() {
 
   let history = useHistory()
@@ -31,10 +47,10 @@ function Login() {
   return (
     <Box className={useStyles().root} >
       <Logo/>
-      <Form onSubmit={verify} >
-          <TextInputUsual name='name'/>
-          <TextInputUsual name='password'/>
-          <button type="submit">ENVIAR</button>
+      <Form /* initialData={initialData} */borderWidth={5} className={useStyles().inputArea} onSubmit={verify} >
+          <TextInput type="name" name='name'/>
+          <TextInput type="password" name='password'/>
+          <LoginButton title={`LOGIN`}/>
         </Form>  
     </Box>
     
