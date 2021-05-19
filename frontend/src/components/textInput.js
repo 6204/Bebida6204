@@ -4,30 +4,37 @@ import { Box,
         TextField, 
         InputAdornment,
     } from '@material-ui/core'
-import { AccountCircle, Lock, Visibility, VisibilityOff }from '@material-ui/icons';
+import { AccountCircle, Lock, Title, Visibility, VisibilityOff }from '@material-ui/icons';
 import {useField} from '@unform/core'
 
 
-export default function TextInput({name, ...rest}) {
-    let useStyles = makeStyles({
+export default function TextInput({name, title, ...rest}) {
+    const useStyles = makeStyles({
         root: {
             id: "filled-basic",
             label: "Filled",
-            //'#282c34',          
+            //'#282c34',
         },
-        input: {        
-            backgroundColor: '#2a2c30',
+        inputArea: {
             width: '80%',
             height: '10%',
-            borderRadius: 5,
-            borderWidth: 3,
-            border: 'solid rgba(247, 187, 40, 0.05)',            
+        },
+        input: {
+          width: '100%', 
+          height: '100%', 
+          backgroundColor: 'transparent', 
+          border: '1px solid ',
+          borderColor: '#f7bb28',
+        },
+        textLogin: {
+          color: '#ffffff',
+          marginBottom: 5,
         },
     })
 
     const inputRef = useRef(null)
     const {fieldName, registerField, defaultValue, error} = useField(name)
-    
+
     useEffect(()=> {
       registerField({
         name: fieldName,
@@ -37,8 +44,15 @@ export default function TextInput({name, ...rest}) {
     }, [fieldName, registerField])
 
     return(
-      
-      <input ref={inputRef} {...rest} defaultValue={defaultValue} className={useStyles().input} />
-    
+      <div className={useStyles().inputArea}>
+        <a className={useStyles().textLogin}>
+          {title}
+        </a>
+        <input ref={inputRef} {...rest} defaultValue={defaultValue} className={useStyles().input}/>
+
+        {error && <span style={{color: '#f00'}} >{error}</span>}
+      </div>
+
+
     )
 }

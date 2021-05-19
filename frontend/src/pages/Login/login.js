@@ -1,8 +1,8 @@
 import '../../App.css';
-import React, { useState } from 'react'
-import * as yup from 'yup';
-import Logo from '../../components/Logotipo.js'
-import  TextInput from '../../components/TextInput'
+import React, { useState, useRef } from 'react'
+import * as Yup from 'yup';
+import Logo from '../../components/logotipo.js'
+import  TextInput from '../../components/textInput'
 import {InputArea} from '../../components/InputArea'
 import {LoginButton} from '../../components/Button'
 import { Box, Button, makeStyles } from '@material-ui/core'
@@ -38,19 +38,44 @@ const initialData = {
 function Login() {
 
   let history = useHistory()
-  
-  function verify(data){
-    console.log(data)
-    //history.push("/menu") 
+  const formRef = useRef(null)
+
+  async function verify(data, {reset}){
+    try {
+      const schema = Yup.object().shape({
+        usuario: Yup.string()
+          .required('O usuário é obrigatório'),      
+        senha: Yup.string()
+          .min(3, 'No mínimo três caracteres')
+          .required('A senha é obrigatória')
+      })
+      //history.push("/menu")
+      await schema.validate(data, {
+        abortEarly: false,
+      }) 
+
+      formRef.current.setErrors({}) 
+      reset()
+    } catch(err) {
+      if (err instanceof Yup.ValidationError){
+        const errorMessages = {}
+        
+        err.inner.forEach(error => {
+          errorMessages[error.path] = error.message
+        })
+
+        formRef.current.setErrors(errorMessages) 
+      }
+    }
+
   }
   
   return (
     <Box className={useStyles().root} >
       <Logo/>
-      <Form /* initialData={initialData} */borderWidth={5} className={useStyles().inputArea} onSubmit={verify} >
-          
-          <TextInput type="name" name='name'/>
-          <TextInput type="password" name='password'/>
+      <Form ref= {formRef} borderWidth={5} className={useStyles().inputArea} onSubmit={verify} >
+          <TextInput type="name" name='usuario' title={'Usuário'}/>
+          <TextInput type="password" name='senha' title={'Senha'}/>
           <LoginButton title={`LOGIN`}/>
         </Form>  
     </Box>
@@ -60,4 +85,4 @@ function Login() {
 }
 
 
-export default Login;
+export default Login
