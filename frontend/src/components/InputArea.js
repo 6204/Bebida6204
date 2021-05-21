@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { 
     Box,
     makeStyles,
-
 } from '@material-ui/core'
 
 export const InputArea = (props) => {

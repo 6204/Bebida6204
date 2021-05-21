@@ -1,13 +1,14 @@
 import '../../App.css';
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import * as Yup from 'yup';
 import Logo from '../../components/logotipo.js'
 import  TextInput from '../../components/textInput'
-import {InputArea} from '../../components/InputArea'
 import {LoginButton} from '../../components/Button'
-import { Box, Button, makeStyles } from '@material-ui/core'
-import { BrowserRouter as Router, useHistory } from 'react-router-dom';
+import { Box,  makeStyles } from '@material-ui/core'
+//import { useHistory } from 'react-router-dom';
 import {Form} from '@unform/web'
+import api from '../../api'
+//import {useUser} from '../../contexts/User';
 const useStyles = makeStyles({
   root: {
     display:'flex',
@@ -31,21 +32,36 @@ const useStyles = makeStyles({
   }, 
 })
  
-const initialData = {
-  name: 'Luan Santos',
-}
+/* const initialData = {
+  email: 'Luan Santos',
+} */
 
 function Login() {
 
-  let history = useHistory()
+  //let history = useHistory()
   const formRef = useRef(null)
+  //const {user, setUser} = useUser();
+
+  async function autenticar({email, password}){
+    const response = await api.post('/authenticate', {
+      email: email,
+      password: password
+    },
+    {
+      headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': true,
+      }
+    })
+  }
 
   async function verify(data, {reset}){
     try {
       const schema = Yup.object().shape({
         email: Yup.string()
+          .email('Digite um e-mail válido')
           .required('O E-mail é obrigatório'),      
-        senha: Yup.string()
+        password: Yup.string()
           .min(3, 'No mínimo três caracteres')
           .required('A senha é obrigatória')
       })
@@ -53,6 +69,9 @@ function Login() {
       await schema.validate(data, {
         abortEarly: false,
       }) 
+      
+      autenticar(data.email, data.password)
+
 
       formRef.current.setErrors({}) 
       reset()
@@ -73,9 +92,9 @@ function Login() {
   return (
     <Box className={useStyles().root} >
       <Logo/>
-      <Form ref= {formRef} borderWidth={5} className={useStyles().inputArea} onSubmit={verify} >
-          <TextInput type="email" name='email' title={'E-mail'}/>
-          <TextInput type="password" name='senha' title={'Senha'}/>
+      <Form ref= {formRef} className={useStyles().inputArea} onSubmit={verify} >
+          <TextInput name='email' title={'E-mail'}/>
+          <TextInput type="password" name='password' title={'Senha'}/>
           <LoginButton title={`LOGIN`}/>
         </Form>  
     </Box>

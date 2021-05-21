@@ -1,9 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { 
     Button,
-    Box,
     makeStyles,
-
 } from '@material-ui/core'
 
 export const LoginButton = ({action, title}) => {

@@ -1,10 +1,6 @@
-import React, {useState, useRef, useEffect} from 'react'
-import { Box, 
-        makeStyles, 
-        TextField, 
-        InputAdornment,
+import React, { useRef, useEffect} from 'react'
+import { makeStyles, 
     } from '@material-ui/core'
-import { AccountCircle, Lock, Title, Visibility, VisibilityOff }from '@material-ui/icons';
 import {useField} from '@unform/core'
 
 
