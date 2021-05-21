@@ -43,8 +43,8 @@ function Login() {
   async function verify(data, {reset}){
     try {
       const schema = Yup.object().shape({
-        usuario: Yup.string()
-          .required('O usuário é obrigatório'),      
+        email: Yup.string()
+          .required('O E-mail é obrigatório'),      
         senha: Yup.string()
           .min(3, 'No mínimo três caracteres')
           .required('A senha é obrigatória')
@@ -74,7 +74,7 @@ function Login() {
     <Box className={useStyles().root} >
       <Logo/>
       <Form ref= {formRef} borderWidth={5} className={useStyles().inputArea} onSubmit={verify} >
-          <TextInput type="name" name='usuario' title={'Usuário'}/>
+          <TextInput type="email" name='email' title={'E-mail'}/>
           <TextInput type="password" name='senha' title={'Senha'}/>
           <LoginButton title={`LOGIN`}/>
         </Form>  
