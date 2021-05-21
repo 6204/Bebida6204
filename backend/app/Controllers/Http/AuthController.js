@@ -11,7 +11,7 @@ class AuthController {
         return user
     }
 
-    async index(){
+    async users(){
         const usuarios = await User.all();
 
         return usuarios
