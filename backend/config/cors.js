@@ -15,8 +15,8 @@ module.exports = {
   | String: * - A wildcard to allow current request origin
   | Function - Receives the current origin and should return one of the above values.
   |
-  */
-  origin: false,
+  */ 
+  origin: true,
 
   /*
   |--------------------------------------------------------------------------
@@ -73,7 +73,7 @@ module.exports = {
   | boolean.
   |
   */
-  credentials: false,
+  //credentials: false,
 
   /*
   |--------------------------------------------------------------------------
