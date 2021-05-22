@@ -46,13 +46,10 @@ function Login() {
     const response = await api.post('/authenticate', {
       email: email,
       password: password
-    },
-    {
-      headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': true,
-      }
     })
+    if(response){
+      console.log(response)
+    }
   }
 
   async function verify(data, {reset}){
@@ -70,7 +67,7 @@ function Login() {
         abortEarly: false,
       }) 
       
-      autenticar(data.email, data.password)
+      autenticar(data)
 
 
       formRef.current.setErrors({}) 
@@ -96,7 +93,7 @@ function Login() {
           <TextInput name='email' title={'E-mail'}/>
           <TextInput type="password" name='password' title={'Senha'}/>
           <LoginButton title={`LOGIN`}/>
-        </Form>  
+       </Form>  
     </Box>
     
 
