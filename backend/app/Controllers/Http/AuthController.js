@@ -28,9 +28,10 @@ class AuthController {
                 .where('email', `${email}`)
                 .first()    
             const result = {
-                token,
+                ...token,
                 ...user
             }
+            delete result.password 
             return result
         }
     }
