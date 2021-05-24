@@ -44,7 +44,7 @@ export default function TextInput({name, title, ...rest}) {
         <a className={useStyles().textLogin}>
           {title}
         </a>
-        <input ref={inputRef} {...rest} defaultValue={defaultValue} className={useStyles().input}/>
+        <input href={''} ref={inputRef} {...rest} defaultValue={defaultValue} className={useStyles().input}/>
 
         {error && <span style={{color: '#f00'}} >{error}</span>}
       </div>

@@ -1,7 +1,11 @@
 import logo from '../../assets/logo.svg';
 import '../../App.css';
 import React from 'react'
+import { useUser } from '../../contexts/User'
+
 function Menu() {
+  const { user } = useUser()
+  console.log(user)
   return (
     <div className="App">
       <header className="App-header">
@@ -15,7 +19,7 @@ function Menu() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          {user.token}
         </a>
       </header>
     </div>

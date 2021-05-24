@@ -43,19 +43,31 @@ function Login() {
   const {user, setUser} = useUser();
 
   async function autenticar({email, password}){
-    const response = await api.post('/authenticate', {
-      email: email,
-      password: password
-    })
-    console.log(response)
-    const token = response.data
-    if(response){
-      await setUser(token)
-      history.push("/menu")
-    } else {
-      alert('Usuário não encontrado')
-    } 
-  }
+    
+    try {
+      const response = await api.post('/authenticate', {
+        email: email,
+        password: password
+      })
+      const tokenAndUser = response.data
+      if(response){
+        await setUser(tokenAndUser)
+        history.push("/menu")
+      }
+    } catch(err) {
+      const errorMessages = {}
+      err.response.data.forEach(error => {
+        if(error.field == 'email'){
+          errorMessages[error.field] = `O E-mail é inválido`
+        } else if(error.field == 'password'){
+          errorMessages[error.field] = `A senha não é válida`
+        } else {
+          errorMessages[error.field] = `Deu Bigode`
+        }
+      })
+      formRef.current.setErrors(errorMessages)
+    }
+  } 
 
   async function verify(data, {reset}){
     try {
@@ -70,14 +82,14 @@ function Login() {
       await schema.validate(data, {
         abortEarly: false,
       }) 
-      
-      autenticar(data)
 
+      autenticar(data)
 
       formRef.current.setErrors({}) 
       reset()
     } catch(err) {
       if (err instanceof Yup.ValidationError){
+
         const errorMessages = {}
         
         err.inner.forEach(error => {
@@ -87,7 +99,6 @@ function Login() {
         formRef.current.setErrors(errorMessages) 
       }
     }
-
   }
   
   return (
