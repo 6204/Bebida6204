@@ -1,6 +1,8 @@
 'use strict'
 
 const User = use('App/Models/User')
+const Database = use('Database')
+const Response = use('Adonis/Src/Response')
 
 class AuthController {
     async register({request}){
@@ -17,10 +19,20 @@ class AuthController {
         return usuarios
     }
 
-    async authenticate({request, auth}){
+    async authenticate({request, response, auth}){
         const {email, password} = request.all()
         const token = await auth.attempt(email, password)
-        return token
+        if(token){
+            const user = await  Database
+                .table('users')
+                .where('email', `${email}`)
+                .first()    
+            const result = {
+                token,
+                ...user
+            }
+            return result
+        }
     }
 }
 
