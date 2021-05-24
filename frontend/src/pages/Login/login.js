@@ -5,10 +5,10 @@ import Logo from '../../components/logotipo.js'
 import  TextInput from '../../components/textInput'
 import {LoginButton} from '../../components/Button'
 import { Box,  makeStyles } from '@material-ui/core'
-//import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {Form} from '@unform/web'
 import api from '../../api'
-//import {useUser} from '../../contexts/User';
+import {useUser} from '../../contexts/User';
 const useStyles = makeStyles({
   root: {
     display:'flex',
@@ -38,18 +38,23 @@ const useStyles = makeStyles({
 
 function Login() {
 
-  //let history = useHistory()
+  let history = useHistory()
   const formRef = useRef(null)
-  //const {user, setUser} = useUser();
+  const {user, setUser} = useUser();
 
   async function autenticar({email, password}){
     const response = await api.post('/authenticate', {
       email: email,
       password: password
     })
+    console.log(response)
+    const token = response.data
     if(response){
-      console.log(response)
-    }
+      await setUser(token)
+      history.push("/menu")
+    } else {
+      alert('Usuário não encontrado')
+    } 
   }
 
   async function verify(data, {reset}){
@@ -62,7 +67,6 @@ function Login() {
           .min(3, 'No mínimo três caracteres')
           .required('A senha é obrigatória')
       })
-      //history.push("/menu")
       await schema.validate(data, {
         abortEarly: false,
       }) 
