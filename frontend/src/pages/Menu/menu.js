@@ -1,28 +1,37 @@
-import logo from '../../assets/logo.svg';
 import '../../App.css';
 import React from 'react'
 import { useUser } from '../../contexts/User'
+import { Box,  makeStyles } from '@material-ui/core'
+import HeaderMenu from '../../components/headerMenu'
+const useStyles = makeStyles({
+  root: {
+    display:'flex',
+    backgroundColor: '#282c34',//'#282c34',
+    height: '100vh',
+  },
+  inputArea: {
+    display:'flex',    
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    height: '35vh',
+    width: '35vh',
+    border: '1px solid ',
+    borderColor: '#f7bb28',
+    borderRadius: 20,
+
+  }, 
+})
 
 function Menu() {
   const { user } = useUser()
-  console.log(user)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js and assets</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {user.token}
-        </a>
-      </header>
-    </div>
+    <Box className={useStyles().root}>
+      <HeaderMenu>
+        
+      </HeaderMenu>
+    </Box>
   );
 }
 
