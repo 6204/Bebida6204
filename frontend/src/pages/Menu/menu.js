@@ -9,18 +9,6 @@ const useStyles = makeStyles({
     backgroundColor: '#282c34',//'#282c34',
     height: '100vh',
   },
-  inputArea: {
-    display:'flex',    
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    height: '35vh',
-    width: '35vh',
-    border: '1px solid ',
-    borderColor: '#f7bb28',
-    borderRadius: 20,
-
-  }, 
 })
 
 function Menu() {

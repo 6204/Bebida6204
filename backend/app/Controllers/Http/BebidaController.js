@@ -100,9 +100,11 @@ class BebidaController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, auth, response }) {
+  async destroy ({ params, auth }) {
     const bebida = await Bebida.findOrFail(params.id)
-    
+    /* if(bebida.user_id !== auth.user.id){
+      return response.status(401);
+    } */
     await bebida.delete()
 
   }

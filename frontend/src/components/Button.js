@@ -19,11 +19,6 @@ export const LoginButton = ({action, title}) => {
         textButton: {
             color: '#ffffff',
         },
-        root: {
-            display: 'flex',
-            flex: 1,
-            height: '100%', 
-          },
     })
 
 

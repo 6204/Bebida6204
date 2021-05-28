@@ -20,6 +20,7 @@ Route.post('/register', 'AuthController.register')
 Route.post('/authenticate', 'AuthController.authenticate')
 Route.get('/users', "AuthController.users").middleware(['auth'])
 
+
 Route.get('/app', "AppController.index").middleware(['auth'])
 
 Route.group(()=>{

@@ -19,6 +19,7 @@ class AuthController {
         return usuarios
     }
 
+
     async authenticate({request, response, auth}){
         const {email, password} = request.all()
         const token = await auth.attempt(email, password)
@@ -35,6 +36,7 @@ class AuthController {
             return result
         }
     }
+
 }
 
 module.exports = AuthController
