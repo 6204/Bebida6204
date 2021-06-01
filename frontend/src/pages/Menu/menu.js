@@ -5,20 +5,21 @@ import { Box,  makeStyles } from '@material-ui/core'
 import HeaderMenu from '../../components/headerMenu'
 const useStyles = makeStyles({
   root: {
-    display:'flex',
-    backgroundColor: '#282c34',//'#282c34',
     height: '100vh',
+    background: '#282c34'
   },
+  cores: {
+    background: '#282c34',
+    texto: '#f7bb28'
+  }
 })
 
 function Menu() {
   const { user } = useUser()
-
+  const classes = useStyles()
   return (
     <Box className={useStyles().root}>
-      <HeaderMenu>
-        
-      </HeaderMenu>
+      <HeaderMenu />
     </Box>
   );
 }

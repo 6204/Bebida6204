@@ -3,7 +3,7 @@ import {
     Button,
     makeStyles,
 } from '@material-ui/core'
-
+import IconPlus from '../assets/plus.png'
 export const LoginButton = ({action, title}) => {
 
     let useStyles = makeStyles({
@@ -31,6 +31,34 @@ export const LoginButton = ({action, title}) => {
               }}
             >
                 {title}
+            </Button>   
+    )   
+}
+
+export const LogoutButton = ({action, title}) => {
+
+    let useStyles = makeStyles({
+        loginButton: {
+            background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+            height: '50px',     
+            alignItems: 'center',
+            justifyContent: 'center', 
+        
+        },
+        textButton: {
+            color: '#ffffff',
+        },
+    })
+
+
+    return (
+            <Button
+                classes={{
+                root: useStyles().loginButton, // class name, e.g. `classes-nesting-root-x`
+                label: useStyles().textButton, // class name, e.g. `classes-nesting-label-x`
+              }}
+            >
+                <img height='15vh' src={IconPlus}/>
             </Button>   
     )   
 }

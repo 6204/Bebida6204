@@ -7,42 +7,24 @@ import {
 
 const useStyles = makeStyles({
     linkButton: {
-        background: '#282c34',   
-        alignItems: 'center',
-        justifyContent: 'center',
-        "&:hover": {
-            backgroundColor: "#282c34"
-        },
-        "&:last-child": {
-            borderRight: "solid 1px #cccccc"
-        } 
-    
-    },
-    linkButtonP: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        "&:hover": {
-            backgroundColor: "#282c34"
-        },
-        "&:last-child": {
-            borderRight: "solid 1px #cccccc"
-        } 
-    
+      color: '#f7bb28', 
+      borderColor: '#f7bb28',
+      height: '50px',
     },
     textButton: {
-        color: '#ffffff',
+        color: '#f7bb28',
     },
 })
 
 function LinkButton(){
-
+    const classes = useStyles()    
 
     return(
         <Button
         variant="outlined"
         classes={{
-            root: useStyles().linkButton, // class name, e.g. `classes-nesting-root-x`
-            label: useStyles().textButton, // class name, e.g. `classes-nesting-label-x`
+            root: classes.linkButton, // class name, e.g. `classes-nesting-root-x`
+            label: classes.textButton, // class name, e.g. `classes-nesting-label-x`
           }}
         >
             Bebidas
