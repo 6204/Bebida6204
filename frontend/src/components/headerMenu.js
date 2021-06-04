@@ -1,8 +1,7 @@
 import React from 'react'
-import { Box,  makeStyles, AppBar, Button } from '@material-ui/core'
+import { Box,  makeStyles, AppBar, Button, Toolbar, Typography } from '@material-ui/core'
 import Logo from './logoSemFundo'
-import LinkButton from './linkButton'
-import {LogoutButton} from './Button'
+import {AddButton, LinkButton, LogoutButton} from './Button'
 const useStyles = makeStyles({
     headerArea: {
       background: '#282c34',//'#282c34',
@@ -17,13 +16,17 @@ const useStyles = makeStyles({
     },
     appBar: {
       boxShadow: '0px 2px 4px -1px rgb(247 187 40 / 20%), 0px 4px 5px 0px rgb(247 187 40 / 14%), 0px 1px 10px 0px rgb(247 187 40 / 12%)',  
-      flexDirection: 'row', 
+      flexDirection: 'row',
       alignItems: 'center', 
       backgroundColor: '#282c34',
-      padding: 5,
+      paddingInlineEnd: 100,
+      paddingInlineStart: 100,
+    },
+    space: {
+      width: '10vh',
     },
     grow: {
-      width: '5vh',
+      flexGrow: 1,
     },
   })
 
@@ -35,17 +38,16 @@ function HeaderMenu() {
       <div className={useStyles().headerArea}>
         <AppBar color='inherit' className={classes.appBar}>
           <Logo/>
-          <div className={classes.grow}/>
+          <div className={classes.space}/>
           <LinkButton />
-          <LogoutButton title={'+'}/>
+          <div className={classes.grow}/>
+          <AddButton title={'+'}/>
+          <div className={classes.space}/>
+          <LogoutButton/>
+          <div className={classes.space}/>
         </AppBar>
-       {/* <div className={useStyles().headerLogo}>
-        <Logo/>
-       </div>
+        
 
-       <div className={useStyles().header}>
-        <LinkButton/>
-       </div> */}
       </div>
     );
   }

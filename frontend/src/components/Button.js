@@ -3,7 +3,8 @@ import {
     Button,
     makeStyles,
 } from '@material-ui/core'
-import IconPlus from '../assets/plus.png'
+import {ExitToApp, Add} from '@material-ui/icons'
+
 export const LoginButton = ({action, title}) => {
 
     let useStyles = makeStyles({
@@ -35,12 +36,13 @@ export const LoginButton = ({action, title}) => {
     )   
 }
 
-export const LogoutButton = ({action, title}) => {
+export const AddButton = ({action, title}) => {
 
     let useStyles = makeStyles({
         loginButton: {
             background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-            height: '50px',     
+            height: '50px',  
+            width: '100px',   
             alignItems: 'center',
             justifyContent: 'center', 
         
@@ -58,7 +60,67 @@ export const LogoutButton = ({action, title}) => {
                 label: useStyles().textButton, // class name, e.g. `classes-nesting-label-x`
               }}
             >
-                <img height='15vh' src={IconPlus}/>
+                <Add/>
             </Button>   
     )   
+}
+
+export const LinkButton = () => {
+
+    const useStyles = makeStyles({
+        linkButton: {
+          color: '#f7bb28', 
+          borderColor: '#f7bb28',
+          height: '50px',
+        },
+        textButton: {
+            color: '#f7bb28',
+        },
+    })
+
+
+    const classes = useStyles()    
+
+    return(
+        <Button
+        variant="outlined"
+        classes={{
+            root: classes.linkButton, // class name, e.g. `classes-nesting-root-x`
+            label: classes.textButton, // class name, e.g. `classes-nesting-label-x`
+          }}
+        >
+            Bebidas
+        </Button>
+
+    )  
+}
+
+export const LogoutButton = () => {
+
+    const useStyles = makeStyles({
+        linkButton: {
+          color: '#f7bb28', 
+          borderColor: '#f7bb28',
+          height: '50px',
+        },
+        textButton: {
+            color: '#f7bb28',
+        },
+    })
+
+
+    const classes = useStyles()    
+
+    return(
+        <Button
+        variant="outlined"
+        classes={{
+            root: classes.linkButton, // class name, e.g. `classes-nesting-root-x`
+            label: classes.textButton, // class name, e.g. `classes-nesting-label-x`
+          }}
+        >
+            <ExitToApp/>
+        </Button>
+
+    )  
 }
