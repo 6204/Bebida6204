@@ -1,7 +1,9 @@
 import React from 'react'
 import Logo from '../assets/logobebida.png'
+import Porcentagem from '../assets/porcentagem.png'
+import { makeStyles } from '@material-ui/core/styles';
 
-function Logotipo(){
+export const Logotipo = () => {
 
     return(
 
@@ -9,4 +11,10 @@ function Logotipo(){
         
 )}
 
-export default Logotipo
+export const Porcento = () => {
+
+    return(
+
+        <img  height={15} src={Porcentagem} alt='Logo'/>
+        
+)}

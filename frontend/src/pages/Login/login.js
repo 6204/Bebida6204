@@ -1,7 +1,7 @@
 import '../../App.css';
 import React, { useRef } from 'react'
 import * as Yup from 'yup';
-import Logo from '../../components/logotipo.js'
+import {Logotipo} from '../../components/logotipo.js'
 import  TextInput from '../../components/textInput'
 import {LoginButton} from '../../components/Button'
 import { Box,  makeStyles } from '@material-ui/core'
@@ -103,7 +103,7 @@ function Login() {
   
   return (
     <Box className={useStyles().root} >
-      <Logo/>
+      <Logotipo/>
       <Form ref= {formRef} className={useStyles().inputArea} onSubmit={verify} >
           <TextInput name='email' title={'E-mail'}/>
           <TextInput type="password" name='password' title={'Senha'}/>

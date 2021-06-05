@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Grid, Box, Button, Paper} from '@material-ui/core';
-import {LocalBar} from '@material-ui/icons'
-import Typography from '@material-ui/core/Typography';
+import {Grid, Box, Button, Paper, ButtonBase, Typography} from '@material-ui/core';
+import {LocalBar, MoreVert} from '@material-ui/icons'
 
 const bebidas = [
 {
@@ -10,30 +9,35 @@ const bebidas = [
     categoriaId: 1,
     name: 'Brahma Chopp',
     teor: '5%',
+    categoria: 'Cerveja',
 }, 
 {
     id: 2,
     categoriaId: 1,
     name: 'Brahma Duplo malte',
     teor: '6%',
+    categoria: 'Cerveja',
 },
 {
     id: 3,
     categoriaId: 2,
     name: 'Quinta do Morgado',
     teor: '25%',
+    categoria: 'Vinho',
 },
 {
   id: 4,
   categoriaId: 3,
   name: 'Black Label',
   teor: '42%',
+  categoria: 'Whisky',
 },
 {
   id: 5,
   categoriaId: 3,
   name: 'Red Label',
   teor: '47%',
+  categoria: 'Whisky',
 },
 ]
 
@@ -62,10 +66,14 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    display: 'flex',
+    flexDirection: 'column',
     margin: 'auto',
     maxWidth: 500,
+    height: 150,
     background: '#f7bb28',
     color: '#282c34',
+    justifyContent: 'space-between',
 
   },
   
@@ -90,19 +98,29 @@ export default function ComplexGrid() {
                           <Box>
                             <Typography
                             variant='h5'
-                            style={{width: '75%', color: '#282c34', backgroundColor: '#ffffff'}} 
-                            >                              
-                              {item.name}
-                            </Typography>
-                            <Button/>                            
+                            style={{color: '#282c34', justifyContent: 'flex-end', backgroundColor: '#f7bb28'}} 
+                            > 
+                              <ButtonBase style={{color: '#f7bb28', marginRight: 15, height: 40, background: '#282c34'}}>
+                                <MoreVert/>  
+                              </ButtonBase>                            
+                              {item.name}           
+                            </Typography>                                                     
                           </Box>
                           <Box>
-                              <LocalBar/>
-                              {item.name}
-                          </Box>
-                          <Box>
-                              <LocalBar/>
-                              {item.name}
+                            <Box>
+                              <Typography
+                                variant='h6'
+                              >
+                                {`Teor Alcólico: ${item.teor}`}
+                              </Typography>
+                            </Box>
+                            <Box style={{ marginTop: 10}}>
+                              <Typography
+                                variant='h7'
+                              >
+                                {`Categoria: ${item.categoria}`}
+                              </Typography>
+                            </Box>
                           </Box>
                         </Paper>
                     </Grid>
