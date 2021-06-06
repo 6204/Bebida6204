@@ -36,7 +36,7 @@ export const LoginButton = ({action, title}) => {
     )   
 }
 
-export const AddButton = ({action, title}) => {
+export const AddButton = ({onClick}) => {
 
     let useStyles = makeStyles({
         loginButton: {
@@ -55,6 +55,7 @@ export const AddButton = ({action, title}) => {
 
     return (
             <Button
+                onClick={onClick}
                 classes={{
                 root: useStyles().loginButton, // class name, e.g. `classes-nesting-root-x`
                 label: useStyles().textButton, // class name, e.g. `classes-nesting-label-x`
@@ -65,7 +66,7 @@ export const AddButton = ({action, title}) => {
     )   
 }
 
-export const LinkButton = () => {
+export const LinkButton = ({onClick}) => {
 
     const useStyles = makeStyles({
         linkButton: {
@@ -76,13 +77,13 @@ export const LinkButton = () => {
         textButton: {
             color: '#f7bb28',
         },
-    })
-
+    }) 
 
     const classes = useStyles()    
 
     return(
         <Button
+        onClick={onClick}
         variant="outlined"
         classes={{
             root: classes.linkButton, // class name, e.g. `classes-nesting-root-x`

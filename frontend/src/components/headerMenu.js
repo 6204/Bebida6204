@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box,  makeStyles, AppBar, Button, Toolbar, Typography } from '@material-ui/core'
 import Logo from './logoSemFundo'
+import { useHistory } from 'react-router-dom';
 import {AddButton, LinkButton, LogoutButton} from './Button'
 const useStyles = makeStyles({
     headerArea: {
@@ -31,6 +32,14 @@ const useStyles = makeStyles({
   })
 
 function HeaderMenu() {
+  let history = useHistory()
+
+    const goToBebidas = () => {
+      history.push("/bebidas")
+    }
+    const goToMenu = () => {
+      history.push("/menu")
+    }
 
     const classes = useStyles()
 
@@ -39,9 +48,9 @@ function HeaderMenu() {
         <AppBar color='inherit' className={classes.appBar}>
           <Logo/>
           <div className={classes.space}/>
-          <LinkButton />
+          <LinkButton onClick={goToMenu} />
           <div className={classes.grow}/>
-          <AddButton title={'+'}/>
+          <AddButton onClick={goToBebidas} />
           <div className={classes.space}/>
           <LogoutButton/>
           <div className={classes.space}/>
