@@ -45,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  box:{
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
@@ -84,27 +89,22 @@ export default function ComplexGrid() {
 
   return (
     <Box p={6} style={{marginInline: 50,}}>
-          <Typography
-           variant='h5'
-           style={{fontWeight: 600, color: '#f7bb28', marginBottom: 20,}} 
-          >
-            Filtros  
-          </Typography>
           <Grid container style={{justifyContent: 'center'}} spacing={6}  >
             {
                 bebidas.map((item, index) => (
                     <Grid item  lg={3} md={4} sm={6} xs={12}>
                         <Paper className={classes.paper}>
-                          <Box>
+                          <Box className={classes.box}>
                             <Typography
                             variant='h5'
-                            style={{color: '#282c34', justifyContent: 'flex-end', backgroundColor: '#f7bb28'}} 
-                            > 
-                              <ButtonBase style={{color: '#f7bb28', marginRight: 15, height: 40, background: '#282c34'}}>
+                            style={{color: '#282c34'}} 
+                            >                             
+                              {item.name}         
+                               
+                            </Typography>
+                            <ButtonBase style={{color: '#f7bb28', height: 40, background: '#282c34'}}>
                                 <MoreVert/>  
-                              </ButtonBase>                            
-                              {item.name}           
-                            </Typography>                                                     
+                            </ButtonBase>                                                      
                           </Box>
                           <Box>
                             <Box>

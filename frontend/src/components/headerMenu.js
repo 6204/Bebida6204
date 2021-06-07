@@ -46,7 +46,9 @@ function HeaderMenu() {
     return (
       <div className={useStyles().headerArea}>
         <AppBar color='inherit' className={classes.appBar}>
-          <Logo/>
+          <Button onClick={goToMenu}>
+            <Logo/>
+          </Button>
           <div className={classes.space}/>
           <LinkButton onClick={goToMenu} />
           <div className={classes.grow}/>

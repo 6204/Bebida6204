@@ -1,4 +1,3 @@
-import '../../App.css';
 import React, { useRef } from 'react'
 import * as Yup from 'yup';
 import {Logotipo} from '../../components/logotipo.js'
