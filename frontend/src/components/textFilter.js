@@ -9,7 +9,7 @@ export const TextFilter = () => {
           flexWrap: 'wrap',
         },
         textField: {
-          width: '50%',
+          width: '100%',
           border: '1px solid #f7bb28',
           borderRadius: 4,
           '& .MuiOutlinedInput-input':{
@@ -36,13 +36,7 @@ export const TextFilter = () => {
       const classes = useStyles()
 
     return (
-        <Box className={classes.box}>
-            <Typography
-            variant='h5'
-            style={{fontWeight: 600, color: '#f7bb28', marginTop: 50, marginBottom: 10,}} 
-            >
-                Filtros  
-            </Typography>
+        <Box>
             <TextField
             id="outlined-full-width" 
             placeholder="Nome da bebida"
