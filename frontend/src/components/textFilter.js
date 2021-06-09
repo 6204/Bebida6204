@@ -21,7 +21,7 @@ export const TextFilter = () => {
               borderColor: 'none',
             },
             '&:hover fieldset': {
-              borderColor: 'none',
+              borderColor: 'transparent',
             },
             '&.Mui-focused fieldset': {
               borderColor: 'transparent',

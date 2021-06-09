@@ -27,9 +27,6 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: '#c9c9c9',
-    '& .MuiBox-root MuiBox-root-1289': {
-      height: '100%',
-  },
   },
 })
 

@@ -26,8 +26,12 @@ export const CategoryFilter = () => {
         formControl: {
           margin: theme.spacing(1),
           minWidth: 120,
+          width: '100%',          
         },
         box: {
+            width: '100%',
+            border: '1px solid #f7bb28',
+            borderRadius: 4,
             '& .MuiBox-root MuiBox-root-1289': {
                 height: '100%',
             },
@@ -70,8 +74,7 @@ export const CategoryFilter = () => {
                         <em>{item.name}</em>
                     </MenuItem> 
                 ))
-            }
-            
+            }            
             </Select>
         </FormControl>
         </Box>
