@@ -16,17 +16,22 @@ const useStyles = makeStyles({
     marginInline: 100,
     display: 'flex',
     flexDirection: 'row',
-    background: '#ffffff', 
-    justifyContent: 'space-between',
 },
   textFilterArea: {
-    width: '60%',
-  },
-  categoryFilterArea: {
-    width: '40%',
+    width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: '#c9c9c9',
+    paddingBottom: 16,
+    paddingTop: 16,
+    marginRight: 25,
+  },
+  categoryFilterArea: {
+    paddingBottom: 16,
+    paddingTop: 16,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    marginLeft: 25,
   },
 })
 

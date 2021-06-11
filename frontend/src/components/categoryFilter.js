@@ -25,13 +25,36 @@ export const CategoryFilter = () => {
     const useStyles = makeStyles((theme) => ({
         formControl: {
           margin: theme.spacing(1),
-          minWidth: 120,
           width: '100%',          
         },
         box: {
             width: '100%',
-            border: '1px solid #f7bb28',
+            border: '2px solid #f7bb28',
             borderRadius: 4,
+            '& .MuiSelect-select.MuiSelect-select': {
+                color: '#ffffff',
+            },
+            '& .MuiFormLabel-root':{
+                color: '#ffffff',
+            },
+            '& .MuiFormLabel-root.Mui-focused': {
+                color: '#f7bb28',
+            },
+            '& .MuiSelect-nativeInput': {
+                color: '#f7bb28',
+                height: '100%',
+            },
+            '& .MuiInput-underline:before': {
+                height: '100%',
+                width: '100%',
+                borderBottom: '2px solid #f7bb28',
+            },
+            '& .MuiInput-underline:after': {
+                borderBottom: '2px solid #f7bb28',
+            },
+            '& .MuiInput-formControl': {
+                width: '90%',
+            },
             '& .MuiBox-root MuiBox-root-1289': {
                 height: '100%',
             },

@@ -6,12 +6,20 @@ export const TextFilter = () => {
     const useStyles = makeStyles(() => ({
         root: {
           display: 'flex',
-          flexWrap: 'wrap',
+          justifyContent: 'center',
         },
         textField: {
           width: '100%',
-          border: '1px solid #f7bb28',
+          display: 'flex',
+          justifyContent: 'center',
+          border: '2px solid #f7bb28',
           borderRadius: 4,
+          marginBottom: 0,
+          marginTop: 0,
+          '& .MuiInputBase-root': {
+            height: '100%',
+            border: '0px',
+          }, 
           '& .MuiOutlinedInput-input':{
             fontSize: 16,
             color: '#ffffff',
@@ -30,13 +38,12 @@ export const TextFilter = () => {
         },
         box: {
             marginInline: 100,
-        },
+        }
       }));
 
       const classes = useStyles()
 
     return (
-        <Box>
             <TextField
             id="outlined-full-width" 
             placeholder="Nome da bebida"
@@ -44,6 +51,5 @@ export const TextFilter = () => {
             className={classes.textField}
             variant="outlined"
             />
-        </Box>
     )
 }
