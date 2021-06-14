@@ -3,7 +3,6 @@ import { makeStyles,
     } from '@material-ui/core'
 import {useField} from '@unform/core'
 
-
 export default function TextInput({name, title, ...rest}) {
     const useStyles = makeStyles({
         root: {

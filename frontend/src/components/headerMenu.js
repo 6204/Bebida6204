@@ -7,6 +7,7 @@ const useStyles = makeStyles({
     headerArea: {
       background: '#282c34',//'#282c34',
       height: '10vh',
+      display: 'flex',
     },
     headerLogo: {
       backgroundColor: '#282c34',
@@ -44,7 +45,7 @@ function HeaderMenu() {
     const classes = useStyles()
 
     return (
-      <div className={useStyles().headerArea}>
+      <Box className={useStyles().headerArea}>
         <AppBar color='inherit' className={classes.appBar}>
           <Button onClick={goToMenu}>
             <Logo/>
@@ -59,7 +60,7 @@ function HeaderMenu() {
         </AppBar>
         
 
-      </div>
+      </Box>
     );
   }
   
