@@ -32,6 +32,8 @@ const selectRef = useRef(null);
       options={rest.options}
       defaultValue={defaultValue}
       placeholder='Selecione a Categoria'
+      isSearchable
+      isClearable
       ref={selectRef}
     />
   );

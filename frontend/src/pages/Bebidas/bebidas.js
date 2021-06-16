@@ -7,7 +7,7 @@ import  TextInput from '../../components/textInput'
 import {CategoryFilter} from '../../components/categoryFilter'
 import MySelect from '../../components/select'
 import {Form} from '@unform/web'
-import { Box, Typography, makeStyles } from '@material-ui/core'
+import { Box, Typography, makeStyles, Button } from '@material-ui/core'
 
 const useStyles = makeStyles({
   root: {
@@ -22,6 +22,13 @@ const useStyles = makeStyles({
     marginInline: 100,
 
   }, 
+  textButtonArea: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  }, 
+  textButton: {
+    color: '#ffffff',
+  }, 
 })
 
 function Bebidas() {
@@ -31,16 +38,16 @@ function Bebidas() {
 
   const categoria = [
     {
-      value: 'Cerveja',
+      value: 1,
       label: 'Cerveja',
     }, 
     {
-      value: 'Vinho',
+      value: 2,
       label: 'Vinho',
         
     },
     {
-      value: 'Whisky',
+      value: 3,
       label: 'Whisky',
     },
 ]
@@ -61,8 +68,11 @@ function Bebidas() {
                 >
                   Cadastro de Bebidas
         </Typography>
-        <Form  ref= {formRef} onSubmit={verify}> 
+        <Form  ref={formRef} onSubmit={verify}> 
           <TextInput name='nome' title={'Nome'}/>
+          <Box className={classes.textButtonArea}>
+            <Button className={classes.textButton}>+ Nova categoria de Bebida </Button> 
+          </Box>
           <TextInput name='teor' title={'Teor Alcoólico'}/>  
           <MySelect  name='categoria' options={categoria} isSearchable/>
           <LoginButton title={`Cadastrar`}/>

@@ -7,8 +7,7 @@ class BebidaSchema extends Schema {
   up () {
     this.create('bebidas', (table) => {
       table.increments()
-      table
-        .integer('categoria_id')
+      table.integer('categoria_id')
         .unsigned()
         .notNullable()
         .references('id')
