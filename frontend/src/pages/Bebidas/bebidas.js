@@ -2,8 +2,10 @@ import React, { useRef } from 'react'
 import { useUser } from '../../contexts/User'
 import HeaderMenu from '../../components/headerMenu'
 import MyContainer from '../../components/myContainer'
+import {LoginButton} from '../../components/Button'
 import  TextInput from '../../components/textInput'
 import {CategoryFilter} from '../../components/categoryFilter'
+import Select from '../../components/select'
 import {Form} from '@unform/web'
 import { Box, Typography, makeStyles } from '@material-ui/core'
 
@@ -27,6 +29,30 @@ function Bebidas() {
   const formRef = useRef(null)
   const classes = useStyles()
 
+  const initialData = {
+    categoria:
+  [
+    {
+        
+        name: 'Cerveja',
+    }, 
+    {
+        id: 2,
+        name: 'Vinho',
+    },
+    {
+        id: 3,
+        name: 'Whisky',
+    },
+  ]
+}
+  
+
+
+  function verify(data) {
+    console.log(data)
+  }
+
   return (
     <MyContainer>
       <HeaderMenu />
@@ -37,12 +63,12 @@ function Bebidas() {
                 >
                   Cadastro de Bebidas
         </Typography>
-        <Form  ref= {formRef}  >         
-          <div>
-            <TextInput name='nome' title={'Nome'}/>
-          </div>
+        <Form  initialData={initialData} ref= {formRef} onSubmit={verify}> 
+          <TextInput name='nome' title={'Nome'}/>
           <TextInput name='teor' title={'Teor Alcoólico'}/>  
-        </Form> 
+          <Select name='categoria'/>
+          <LoginButton title={`Cadastrar`}/>
+        </Form > 
       </Box>
     </MyContainer>
   );

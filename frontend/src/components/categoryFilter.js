@@ -15,7 +15,7 @@ const categoria = [
         id: 3,
         name: 'Whisky',
     },
-    ]
+]
 
 
 export const CategoryFilter = () => {
