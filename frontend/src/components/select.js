@@ -1,59 +1,38 @@
 import React, { useRef, useEffect } from 'react';
+import Select from 'react-select';
 import { useField } from '@unform/core';
 
-export default function Select({ name, ...rest }) {
-  const selectRef = useRef(null);
+export default function MySelect ({ name, ...rest }) {
 
-  const categoria = [
-      {
-          id: 1,
-          name: 'Cerveja',
-      }, 
-      {
-          id: 2,
-          name: 'Vinho',
-      },
-      {
-          id: 3,
-          name: 'Whisky',
-      },
-  ]
-  
-      
 
+const selectRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: selectRef.current,
-      path: 'value',
-      getValue: (ref) => {
+      getValue: ref => {
         if (rest.isMulti) {
-          if (!ref.state.value) {
+          if (!ref.select.state.value) {
             return [];
           }
-          return ref.state.value.map((option) => option.value);
+          return ref.select.state.value.map(
+            option => option.value,
+          );
         }
-        if (!ref.state.value) {
+        if (!ref.select.state.ariaSelection.value.value) {
           return '';
         }
-        return ref.state.value.value;
+        return ref.select.state.ariaSelection.value.value;
       },
     });
   }, [fieldName, registerField, rest.isMulti]);
-
   return (
-    <select
+    <Select
+      options={rest.options}
       defaultValue={defaultValue}
+      placeholder='Selecione a Categoria'
       ref={selectRef}
-    >
-      <option value={``}> Selecione a categoria</option>
-      {
-        categoria.map((item, index) => (
-          <option value={`${item.name}`}> {item.name}</option>
-        )         
-      )       
-      }
-    </select>  
+    />
   );
 };

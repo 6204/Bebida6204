@@ -18,6 +18,7 @@ export default function TextInput({name, title, ...rest}) {
           width: '100%', 
           height: '100%', 
           backgroundColor: 'transparent', 
+          color: '#ffffff',
           border: '1px solid ',
           borderColor: '#f7bb28',
         },

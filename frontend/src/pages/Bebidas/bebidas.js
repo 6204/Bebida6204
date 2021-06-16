@@ -5,7 +5,7 @@ import MyContainer from '../../components/myContainer'
 import {LoginButton} from '../../components/Button'
 import  TextInput from '../../components/textInput'
 import {CategoryFilter} from '../../components/categoryFilter'
-import Select from '../../components/select'
+import MySelect from '../../components/select'
 import {Form} from '@unform/web'
 import { Box, Typography, makeStyles } from '@material-ui/core'
 
@@ -29,23 +29,21 @@ function Bebidas() {
   const formRef = useRef(null)
   const classes = useStyles()
 
-  const initialData = {
-    categoria:
-  [
+  const categoria = [
     {
-        
-        name: 'Cerveja',
+      value: 'Cerveja',
+      label: 'Cerveja',
     }, 
     {
-        id: 2,
-        name: 'Vinho',
+      value: 'Vinho',
+      label: 'Vinho',
+        
     },
     {
-        id: 3,
-        name: 'Whisky',
+      value: 'Whisky',
+      label: 'Whisky',
     },
-  ]
-}
+]
   
 
 
@@ -63,10 +61,10 @@ function Bebidas() {
                 >
                   Cadastro de Bebidas
         </Typography>
-        <Form  initialData={initialData} ref= {formRef} onSubmit={verify}> 
+        <Form  ref= {formRef} onSubmit={verify}> 
           <TextInput name='nome' title={'Nome'}/>
           <TextInput name='teor' title={'Teor Alcoólico'}/>  
-          <Select name='categoria'/>
+          <MySelect  name='categoria' options={categoria} isSearchable/>
           <LoginButton title={`Cadastrar`}/>
         </Form > 
       </Box>
