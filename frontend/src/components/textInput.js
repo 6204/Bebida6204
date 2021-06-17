@@ -5,32 +5,29 @@ import {useField} from '@unform/core'
 
 export default function TextInput({name, title, ...rest}) {
     const useStyles = makeStyles({
-        root: {
-            id: "filled-basic",
-            label: "Filled",
-            //'#282c34',
-        },
-        inputArea: {
-            width: '80%',
-            height: '10%',
+        area: {
+            height: '100%',
+            width: '100%',
         },
         input: {
-          width: '100%', 
-          height: '100%', 
+          width: '100%',
+          height: '100%',
           backgroundColor: 'transparent', 
           color: '#ffffff',
           border: '1px solid ',
           borderColor: '#f7bb28',
+          margin: 0,
+          padding: 0,
+          minHeight: 0,
         },
         textLogin: {
           color: '#ffffff',
-          marginBottom: 5,
         },
     })
 
     const inputRef = useRef(null)
     const {fieldName, registerField, defaultValue, error} = useField(name)
-
+    const classes = useStyles()
     useEffect(()=> {
       registerField({
         name: fieldName,
@@ -40,10 +37,7 @@ export default function TextInput({name, title, ...rest}) {
     }, [fieldName, registerField])
 
     return(
-      <div className={useStyles().inputArea}>
-        <a className={useStyles().textLogin}>
-          {title}
-        </a>
+      <div className={classes.area}>
         <input href={''} ref={inputRef} {...rest} defaultValue={defaultValue} className={useStyles().input}/>
 
         {error && <span style={{color: '#f00'}} >{error}</span>}

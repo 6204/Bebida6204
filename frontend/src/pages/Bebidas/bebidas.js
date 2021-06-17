@@ -2,9 +2,9 @@ import React, { useRef } from 'react'
 import { useUser } from '../../contexts/User'
 import HeaderMenu from '../../components/headerMenu'
 import MyContainer from '../../components/myContainer'
+import MyModal from '../../components/myModal'
 import {LoginButton} from '../../components/Button'
 import  TextInput from '../../components/textInput'
-import {CategoryFilter} from '../../components/categoryFilter'
 import MySelect from '../../components/select'
 import {Form} from '@unform/web'
 import { Box, Typography, makeStyles, Button } from '@material-ui/core'
@@ -16,12 +16,19 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  inputArea: {
+  formArea: {
     display: 'flex',
     flexDirection: 'column',
     marginInline: 100,
-
-  }, 
+    backgroundColor: '#000000',
+  },
+  inputArea: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: '60px',
+    backgroundColor: '#c9c9c9',
+  },  
   textButtonArea: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -61,20 +68,29 @@ function Bebidas() {
   return (
     <MyContainer>
       <HeaderMenu />
-      <Box className={classes.inputArea}>
+      <Box className={classes.formArea}>
         <Typography
-                variant='h5'
-                style={{fontWeight: 600, color: '#f7bb28', marginTop: 50, marginBottom: 10, marginInline: 100,}} 
-                >
+          variant='h5'
+          style={{fontWeight: 600, color: '#f7bb28', marginTop: 50, marginBottom: 10, marginInline: 100,}} 
+          >
                   Cadastro de Bebidas
         </Typography>
-        <Form  ref={formRef} onSubmit={verify}> 
-          <TextInput name='nome' title={'Nome'}/>
-          <Box className={classes.textButtonArea}>
-            <Button className={classes.textButton}>+ Nova categoria de Bebida </Button> 
+        <Form  ref={formRef} onSubmit={verify} className={classes.formArea}>
+          <Typography style={{color: '#ffffff',}} variant="subtitle2" gutterBottom>
+          Nome
+          </Typography> 
+          <Box className={classes.inputArea}>
+            <TextInput name='nome' title={'Nome'}/>
           </Box>
+          <MyModal/>
+          <Typography style={{color: '#ffffff',}} variant="subtitle2" gutterBottom>
+          Teor alcóolico
+          </Typography> 
           <TextInput name='teor' title={'Teor Alcoólico'}/>  
-          <MySelect  name='categoria' options={categoria} isSearchable/>
+          <MySelect  name='categoria' 
+          options={categoria} 
+          isSearchable
+          />
           <LoginButton title={`Cadastrar`}/>
         </Form > 
       </Box>

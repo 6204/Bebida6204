@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import {Logotipo} from '../../components/logotipo.js'
 import  TextInput from '../../components/textInput'
 import {LoginButton} from '../../components/Button'
-import { Box,  makeStyles } from '@material-ui/core'
+import { Box,  makeStyles, Typography } from '@material-ui/core'
 import { useHistory } from 'react-router-dom';
 import {Form} from '@unform/web'
 import api from '../../api'
@@ -17,17 +17,26 @@ const useStyles = makeStyles({
     alignItems: 'center',
     flexDirection: 'column',
   },
-  inputArea: {
+  formArea: {
     display:'flex',    
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
-    height: '35vh',
-    width: '35vh',
+    padding: 20,
+    height: '355px',
+    width: '355px',
     border: '1px solid ',
     borderColor: '#f7bb28',
     borderRadius: 20,
+    boxSizing: 'border-box',
 
+  },
+  inputArea: {
+    display: 'flex',
+    width: '100%',
+    height: '70px',
+    flexDirection: 'column',
+    justifyContent: 'center',
   }, 
 })
  
@@ -103,10 +112,20 @@ function Login() {
   return (
     <Box className={useStyles().root} >
       <Logotipo/>
-      <Form ref= {formRef} className={useStyles().inputArea} onSubmit={verify} >
+      <Form ref= {formRef} className={useStyles().formArea} onSubmit={verify} > 
+        <Box className={useStyles().inputArea}>
+          <Typography style={{color: '#ffffff', marginBottom: 0,}} variant="subtitle2" gutterBottom>
+          E-mail
+          </Typography>
           <TextInput name='email' title={'E-mail'}/>
+        </Box>
+        <Box className={useStyles().inputArea}>
+          <Typography style={{color: '#ffffff', marginBottom: 0,}} variant="subtitle2" gutterBottom>
+          Senha
+          </Typography> 
           <TextInput type="password" name='password' title={'Senha'}/>
-          <LoginButton title={`LOGIN`}/>
+        </Box>
+        <LoginButton title={`LOGIN`}/>
        </Form>  
     </Box>
     
