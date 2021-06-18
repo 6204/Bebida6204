@@ -18,6 +18,7 @@ export default function TextInput({name, title, ...rest}) {
           borderColor: '#f7bb28',
           boxSizing: 'border-box',
           paddingInline: 5,
+          fontSize: 16,
         },
         textLogin: {
           color: '#ffffff',

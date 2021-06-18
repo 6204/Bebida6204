@@ -7,6 +7,7 @@ export default function MySelect ({ name, ...rest }) {
 
 const selectRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
+  console.log()
   useEffect(() => {
     registerField({
       name: fieldName,
@@ -20,9 +21,10 @@ const selectRef = useRef(null);
             option => option.value,
           );
         }
-        if (!ref.select.state.ariaSelection.value.value) {
+        console.log(ref.select.state.selectValue[0])
+        /* if (!ref.select.state.ariaSelection.value.value) {
           return '';
-        }
+        } */
         return ref.select.state.ariaSelection.value.value;
       },
     });

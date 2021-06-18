@@ -50,24 +50,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  paper: {
-    padding: theme.spacing(2),
-    margin: 'auto',
-    maxWidth: 500,
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
   grid: {
+    justifyContent: 'center',
+    maxWidth: '100%',
     width: '100%',
-    backgroundColor: '#f7bb28',
+  },
+  gridArea: {
+    maxWidth: '100%',
   },
   paper: {
     padding: theme.spacing(2),
@@ -79,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
     background: '#f7bb28',
     color: '#282c34',
     justifyContent: 'space-between',
-
   },
   
 }));
@@ -88,8 +76,8 @@ export default function ComplexGrid() {
   const classes = useStyles();
 
   return (
-    <Box p={6} style={{marginInline: 50,}}>
-          <Grid container style={{justifyContent: 'center'}} spacing={6}  >
+    <Box className={classes.gridArea} >
+          <Grid container className={classes.grid} spacing={3}  >
             {
                 bebidas.map((item, index) => (
                     <Grid item  lg={3} md={4} sm={6} xs={12}>

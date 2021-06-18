@@ -8,7 +8,6 @@ const useStyles = makeStyles({
       background: '#282c34',//'#282c34',
       height: '100%',
       display: 'flex',
-      marginBottom: 50,
     },
     headerLogo: {
       backgroundColor: '#282c34',
@@ -25,6 +24,7 @@ const useStyles = makeStyles({
       paddingInlineEnd: 100,
       paddingInlineStart: 100,
       position: 'unset',
+      marginBottom: 20,
     },
     space: {
       width: '10vh',

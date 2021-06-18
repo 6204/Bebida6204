@@ -5,6 +5,8 @@ import HeaderMenu from '../../components/headerMenu'
 import GridBebidas from '../../components/gridBebidas'
 import {TextFilter} from '../../components/textFilter'
 import {CategoryFilter} from '../../components/categoryFilter'
+import MyContent from '../../components/myContent'
+
 const useStyles = makeStyles({
   root: {
     background: '#282c34',
@@ -13,7 +15,6 @@ const useStyles = makeStyles({
 
   },
   filters: {
-    marginInline: 100,
     display: 'flex',
     flexDirection: 'row',
 },
@@ -41,21 +42,23 @@ function Menu() {
   return (
     <div className={classes.root}>
       <HeaderMenu />
-      <Typography
-            variant='h5'
-            style={{fontWeight: 600, color: '#f7bb28', marginTop: 50, marginBottom: 10, marginInline: 100,}} 
-            >
-                Filtros  
-      </Typography>
-      <Box className={classes.filters}>
-        <Box className={classes.textFilterArea}>
-          <TextFilter/>
+      <MyContent>
+        <Typography
+              variant='h5'
+              style={{fontWeight: 600, color: '#f7bb28', marginBottom: 10}} 
+              >
+                  Filtros  
+        </Typography>
+        <Box className={classes.filters}>
+          <Box className={classes.textFilterArea}>
+            <TextFilter/>
+          </Box>
+          <Box className={classes.categoryFilterArea}>
+            <CategoryFilter/>
+          </Box>
         </Box>
-        <Box className={classes.categoryFilterArea}>
-          <CategoryFilter/>
-        </Box>
-      </Box>
-      <GridBebidas/>
+        <GridBebidas/>
+      </MyContent>
     </div>
   );
 }

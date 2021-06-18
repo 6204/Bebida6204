@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import * as Yup from 'yup';
 import { useUser } from '../../contexts/User'
 import HeaderMenu from '../../components/headerMenu'
 import MyContainer from '../../components/myContainer'
@@ -7,34 +8,37 @@ import {LoginButton} from '../../components/Button'
 import  TextInput from '../../components/textInput'
 import MySelect from '../../components/select'
 import {Form} from '@unform/web'
-import { Box, Typography, makeStyles, Button } from '@material-ui/core'
+import MyContent from '../../components/myContent'
+import { Box, Typography, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
-  root: {
-    backgroundColor: '#282c34',//'#282c34',
-    height: '100vh',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   formArea: {
     display: 'flex',
     flexDirection: 'column',
-    marginInline: 100,
-    backgroundColor: '#000000',
+    justifyContent: 'space-around',
   },
   inputArea: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    height: '60px',
-    backgroundColor: '#c9c9c9',
-  },  
+    height: '50px',
+
+  }, 
+  categoryArea:{
+    marginTop: 35,
+  }, 
   textButtonArea: {
     display: 'flex',
     justifyContent: 'flex-end',
   }, 
   textButton: {
     color: '#ffffff',
+  },
+  buttonArea: {
+    marginTop: 35,
+    width: '100%',
+    display: 'flex', 
+    justifyContent: 'flex-end',
   }, 
 })
 
@@ -61,39 +65,79 @@ function Bebidas() {
   
 
 
-  function verify(data) {
-    console.log(data)
+  async function verify(data, {reset}) {
+    try {
+      const schema = Yup.object().shape({
+        categoria: Yup.number()
+          .required('Selecione uma categoria. Caso não exista, crie uma nova.'),      
+        nome: Yup.string()
+          .required('O nome é obrigatório'),
+        teor: Yup.string()
+          .required('O teor alcóolico deve ser informado'),
+      })
+      await schema.validate(data, {
+        abortEarly: false,
+      }) 
+
+      console.log('Passou')
+
+      formRef.current.setErrors({}) 
+      reset()
+    } catch(err) {
+      if (err instanceof Yup.ValidationError){
+
+        const errorMessages = {}
+        
+        err.inner.forEach(error => {
+          errorMessages[error.path] = error.message
+        })
+
+        formRef.current.setErrors(errorMessages) 
+      }
+    }
   }
 
   return (
     <MyContainer>
       <HeaderMenu />
-      <Box className={classes.formArea}>
+      <MyContent>
         <Typography
           variant='h5'
-          style={{fontWeight: 600, color: '#f7bb28', marginTop: 50, marginBottom: 10, marginInline: 100,}} 
+          style={{fontWeight: 600, color: '#f7bb28',}} 
           >
-                  Cadastro de Bebidas
+          Cadastro de Bebidas
         </Typography>
-        <Form  ref={formRef} onSubmit={verify} className={classes.formArea}>
-          <Typography style={{color: '#ffffff',}} variant="subtitle2" gutterBottom>
-          Nome
-          </Typography> 
-          <Box className={classes.inputArea}>
-            <TextInput name='nome' title={'Nome'}/>
+        <Form  ref={formRef} onSubmit={verify} className={classes.formArea}>   
+          <Box className={classes.categoryArea}>
+            <MySelect  name='categoria' 
+            options={categoria} 
+            isSearchable
+            />       
+            <MyModal/>
           </Box>
-          <MyModal/>
-          <Typography style={{color: '#ffffff',}} variant="subtitle2" gutterBottom>
-          Teor alcóolico
-          </Typography> 
-          <TextInput name='teor' title={'Teor Alcoólico'}/>  
-          <MySelect  name='categoria' 
-          options={categoria} 
-          isSearchable
-          />
-          <LoginButton title={`Cadastrar`}/>
-        </Form > 
-      </Box>
+          <Box className={classes.categoryArea}>
+            <Typography style={{color: '#ffffff',}} variant="subtitle2" gutterBottom>
+            Nome
+            </Typography> 
+            <Box className={classes.inputArea}>
+              <TextInput name='nome' title={'Nome'}/>
+            </Box>
+          </Box>
+          <Box className={classes.categoryArea}>
+            <Typography style={{color: '#ffffff',}} variant="subtitle2" gutterBottom>
+            Teor alcóolico
+            </Typography> 
+            <Box className={classes.inputArea}>
+              <TextInput name='teor' title={'Teor Alcoólico'}/> 
+            </Box>
+          </Box>           
+          <Box className={classes.buttonArea}>
+            <div style={{ width: '15%', minWidth: 100,}}>
+            <LoginButton  title={`Cadastrar`}/>
+            </div>
+          </Box>
+        </Form >
+      </MyContent>
     </MyContainer>
   );
 }

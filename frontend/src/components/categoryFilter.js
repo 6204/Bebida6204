@@ -24,11 +24,12 @@ export const CategoryFilter = () => {
 
     const useStyles = makeStyles((theme) => ({
         formControl: {
-          margin: theme.spacing(1),
           width: '100%',          
         },
         box: {
             width: '100%',
+            boxSizing: 'border-box',
+            padding: 5,
             border: '2px solid #f7bb28',
             borderRadius: 4,
             '& .MuiSelect-select.MuiSelect-select': {
