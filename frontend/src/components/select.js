@@ -21,22 +21,30 @@ const selectRef = useRef(null);
             option => option.value,
           );
         }
-        console.log(ref.select.state.selectValue[0])
-        /* if (!ref.select.state.ariaSelection.value.value) {
-          return '';
-        } */
-        return ref.select.state.ariaSelection.value.value;
+        console.log(ref.select.state)
+        if(ref.select.state.ariaSelection == null) {
+          return {
+            value: null,
+            label: '',
+          }
+        } else {
+          return ref.select.state.ariaSelection.value;
+        }
+        
       },
     });
   }, [fieldName, registerField, rest.isMulti]);
   return (
-    <Select
+    <div>
+      <Select
       options={rest.options}
       defaultValue={defaultValue}
       placeholder='Selecione a Categoria'
       isSearchable
       isClearable
       ref={selectRef}
-    />
+      />
+      {error && <span style={{color: '#f00'}} >{error}</span>}
+    </div>
   );
 };

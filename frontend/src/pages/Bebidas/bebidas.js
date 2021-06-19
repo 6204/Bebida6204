@@ -10,6 +10,7 @@ import MySelect from '../../components/select'
 import {Form} from '@unform/web'
 import MyContent from '../../components/myContent'
 import { Box, Typography, makeStyles } from '@material-ui/core'
+import { FormatListNumberedRounded } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   formArea: {
@@ -63,13 +64,18 @@ function Bebidas() {
     },
 ]
   
-
+  //RESOLVER VERIFICAÇÃO DE SELEÇÃO DE CATEGORIA
 
   async function verify(data, {reset}) {
+    console.log(data)
     try {
       const schema = Yup.object().shape({
-        categoria: Yup.number()
-          .required('Selecione uma categoria. Caso não exista, crie uma nova.'),      
+        categoria: Yup.object()
+          .shape({
+            value: Yup.number()
+            .required('Selecione uma categoria. Caso não exista, crie uma nova.'),
+            label: Yup.string(),
+        }),
         nome: Yup.string()
           .required('O nome é obrigatório'),
         teor: Yup.string()
